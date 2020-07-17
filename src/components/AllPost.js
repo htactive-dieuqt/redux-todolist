@@ -10,19 +10,21 @@ class AllPost extends Component {
 
     render() {
         return (
-            <div>
+            <div className="posts">
                 {
                     this.props.posts.map((post) => (
-                        <div key={ post.id }>
-                            { post.editing 
-                            ? <EditPost post={ post } 
-                                key={ post.id } 
-                                updatePost={ this.props.actions.updatePost }
-                             /> 
-                            : <Post post={ post } 
-                                key={ post.id } 
-                                editPost={ this.props.actions.editPost } 
-                                deletePost={ this.props.actions.deletePost } /> }
+                        <div className="post" key={post.id}>
+                            {post.editing
+                                ? <EditPost post={post}
+                                    key={post.id}
+                                    updatePost={this.props.actions.updatePost}
+                                />
+                                : <Post post={post}
+                                    key={post.id}
+                                    editPost={this.props.actions.editPost}
+                                    deletePost={this.props.actions.deletePost}
+                                />
+                            }
                         </div>
                     ))
                 }

@@ -1,13 +1,114 @@
-#components-layout-demo-responsive .logo {
-    height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px;
+/* .ui.padded.divided.grid:not(.vertically):not(.horizontally),
+[class*="horizontally padded"].ui.divided.grid {
+    width: 100%;
+    height: 100%;
 }
 
-.site-layout-sub-header-background {
-    background: #fff;
+.ui.grid>.black.column,
+.ui.grid>.black.row,
+.ui.grid>.row>.black.column {
+    height: 100%;
 }
 
-.site-layout-background {
-    background: #fff;
+.column {
+    height: 100%;
+    float: left;
+    width: 400px;
+    background: red;
+}
+
+.columnCenter {
+    width: 1000px;
+    height: 100%;
+    float: left;
+    text-align: center;
+} */
+
+html {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+/* CSS container */
+
+.container {
+    width: 100%;
+    background-color: rgb(241, 243, 246);
+    height: 910px;
+    display: flex;
+}
+
+
+/* CSS sidebar */
+
+.side-bar {
+    width: 15%;
+    background-color: mediumpurple;
+}
+
+
+/* CSS Content */
+
+.content {
+    width: 60%;
+    padding: 2%;
+}
+
+
+/* CSS post container */
+
+.posts {
+    padding: 5%;
+    height: auto;
+    width: 90%;
+    word-break: break-all;
+}
+
+.post {
+    width: 100%;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.post:nth-child(odd) {
+    border-left: 4px solid red;
+}
+
+.post:nth-child(even) {
+    border-left: 4px solid orange;
+}
+
+.checkBox {
+    float: left;
+}
+
+.button-right {
+    float: right;
+}
+
+
+/* CSS Input */
+
+.input-post {
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    font-size: 14px;
+    background-color: white;
+    border: 1px solid whitesmoke;
+}
+
+input:focus,
+input:hover {
+    /* border: lightskyblue; */
+    outline: 1px solid lightskyblue;
+}
+
+
+/* CSS meta panel */
+
+.meta-panel {
+    float: right;
 }

@@ -14,6 +14,7 @@ class Slidebar extends Component {
                     bankground: 'red',
                     fontSize: '1.2rem'
                 }}>
+                    Day la side bar
             </Menu>
         )
     }

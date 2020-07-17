@@ -1,29 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
+// import { Grid, Segment } from 'semantic-ui-react'
 
 import Slidebar from './containers/Slidebar'
 import AllPostContainer from './containers/AllPostContainer'
 import PostFormContainer from './containers/PostFormContainer'
-import MetaPanel from './containers/MetaPanel'
 
-import { Grid } from 'semantic-ui-react'
+import './App.css'
 
-class App extends Component {
-  render() {
-    return (
-      <Grid columns="equal" className="app" style={{ background: '#eee' }}>
-        <Slidebar />
+const App = () => (
+  <div className="container">
+    <div className="side-bar">
+      <Slidebar />
+    </div>
 
-        <Grid.Column style={{ background: 'red', width: 320,  height: 'max-content', float: 'left' }}>
-          <MetaPanel />
-        </Grid.Column>
+    <div className="content">
+      <PostFormContainer />
+      <AllPostContainer />
+    </div>
 
-        <Grid.Column style={{ marginLeft: 320 }}>
-          <PostFormContainer />
-          <AllPostContainer />
-        </Grid.Column>
-      </Grid>
-    );
-  }
-}
+    <div className="meta-panel">
+      Meta
+    </div>
+  </div >
+)
 
 export default App;

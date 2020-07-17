@@ -11,7 +11,7 @@ class PostForm extends Component {
         const content = this.getContent.value;
         this.props.addPost(content);
         this.getContent.value = '';
-    }
+    };
 
     render() {
         return (
@@ -19,6 +19,7 @@ class PostForm extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input
                         required
+                        className="input-post"
                         type="text"
                         placeholder="Type here for add a new todo"
                         ref={(input) => this.getContent = input} />
