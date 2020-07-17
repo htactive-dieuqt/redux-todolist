@@ -8,11 +8,13 @@ import {
 
 class Post extends Component {
     static propTypes = {
-        post: PropTypes.shape({
-            id: PropTypes.number,
-            createdAt: new Date().toLocaleString(),
-            content: PropTypes.string,
-        }).isRequired,
+        post: PropTypes.shape(
+            {
+                id: PropTypes.number,
+                createdAt: new Date().toLocaleString(),
+                content: PropTypes.string,
+            }
+        ).isRequired,
         editPost: PropTypes.func.isRequired,
         deletePost: PropTypes.func.isRequired
     };

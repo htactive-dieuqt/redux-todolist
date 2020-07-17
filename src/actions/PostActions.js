@@ -20,3 +20,9 @@ export const deletePost = (id) => ({
     type: types.DELETE_POST,
     id: id
 });
+
+export const viewCheckbox = (id, checkbox) => ({
+    type: types.VIEW_CHECKBOX,
+    id,
+    checkbox
+})

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import EditPost from './EditPost';
 import Post from './Post';
-import PropTypes from 'prop-types';
+// import CheckBoxDel from './CheckBoxDel'
 
 class AllPost extends Component {
     static propTypes = {
@@ -18,6 +20,7 @@ class AllPost extends Component {
                                 ? <EditPost post={post}
                                     key={post.id}
                                     updatePost={this.props.actions.updatePost}
+                                    deletePost={this.props.actions.deletePost}
                                 />
                                 : <Post post={post}
                                     key={post.id}
@@ -28,6 +31,8 @@ class AllPost extends Component {
                         </div>
                     ))
                 }
+                <input type="checkbox"/> Check all
+                <button> Delete </button>
             </div>
         );
     }

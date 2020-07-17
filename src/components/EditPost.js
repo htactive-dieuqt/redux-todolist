@@ -14,7 +14,8 @@ class EditPost extends Component {
                 content: PropTypes.string,
             }
         ).isRequired,
-        updatePost: PropTypes.func.isRequired
+        updatePost: PropTypes.func.isRequired,
+        deletePost: PropTypes.func.isRequired
     };
 
     handleEdit = (e) => {
@@ -37,7 +38,7 @@ class EditPost extends Component {
                             <CheckOutlined />
                         </button>
                         <button>
-                            <CloseOutlined />
+                            <CloseOutlined onClick={() => this.props.deletePost(this.props.post.id)} />
                         </button>
                     </div>
 

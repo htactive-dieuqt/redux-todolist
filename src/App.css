@@ -112,3 +112,11 @@ input:hover {
 .meta-panel {
     float: right;
 }
+
+
+/* CSS menu */
+
+.menu {
+    width: 32%;
+    float: right;
+}
