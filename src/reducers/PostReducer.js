@@ -1,11 +1,23 @@
 import { ADD_POST, EDIT_POST, UPDATE_POST, DELETE_POST, VIEW_CHECKBOX } from '../constants/PostTypes';
-
-// const initialState = {
-//     list: [],
-//     activeId: null,
-//     viewCheckbox: false
-//   } 
-
+// const dieubadien = [
+//     {
+//         id: 0,
+//         content: "Diệu Quá Bà Khùng",
+//         editing: false,
+//         complete: false,
+//     },
+//     {
+//         id: 1,
+//         content: "Hà Quá Bà Khùng",
+//         editing: false,
+//         complete: true,
+//     }, {
+//         id: 2,
+//         content: "Quyết Quá Bà Khùng",
+//         editing: false,
+//         complete: false,
+//     },
+// ]
 const postReducer = (state = [], action) => {
     switch (action.type) {
         case ADD_POST:
@@ -14,7 +26,7 @@ const postReducer = (state = [], action) => {
                     id: (state.length === 0) ? 0 : state[0].id + 1,
                     content: action.content,
                     editing: false,
-                    checkbox: false,
+                    complete: false,
                 },
                 ...state
             ];
@@ -41,10 +53,19 @@ const postReducer = (state = [], action) => {
             });
 
         case VIEW_CHECKBOX:
-            return 
+            return state.map(post => {
+                if (post.id === action.id) {
+                    return {
+                        ...post,
+                        complete: !post.complete,
+                    }
+                } else {
+                    return post;
+                }
+            });
 
         default:
-return state;
+            return state;
     }
 }
 

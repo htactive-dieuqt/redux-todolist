@@ -15,7 +15,8 @@ class EditPost extends Component {
             }
         ).isRequired,
         updatePost: PropTypes.func.isRequired,
-        deletePost: PropTypes.func.isRequired
+        deletePost: PropTypes.func.isRequired,
+        updateCheck: PropTypes.func.isRequired
     };
 
     handleEdit = (e) => {
@@ -25,12 +26,21 @@ class EditPost extends Component {
         this.props.updatePost(id, newContent);
     }
 
+    handleCheck = (id) => {
+        console.log(id, "hchdshfds")
+        this.props.updateCheck({ id })
+    }
+
     render() {
         return (
             <div>
                 <div>
-                    <input type="checkbox" />
+                    <input type="checkbox"
+                        onClick={() => console.log("dieuba dien")}
+                        checked={this.props.post.complete}
+                    />
                     {this.props.post.createdAt}
+                    {console.log("Đố diệu hắn có vô file")}
                 </div>
                 <form onSubmit={this.handleEdit}>
                     <div className="button-right">

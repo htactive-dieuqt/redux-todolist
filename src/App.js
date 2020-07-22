@@ -5,7 +5,6 @@ import Slidebar from './containers/Slidebar'
 import AllPostContainer from './containers/AllPostContainer'
 import PostFormContainer from './containers/PostFormContainer'
 import MetaPanel from './containers/MetaPanel'
-import Menu from './containers/Menu'
 
 import './App.css'
 
@@ -17,9 +16,6 @@ const App = () => (
 
     <div className="content">
       <PostFormContainer />
-      <div className="menu">
-        <Menu />
-      </div>
       <AllPostContainer />
     </div>
 
