@@ -6,6 +6,9 @@ import {
     CloseOutlined
 } from '@ant-design/icons';
 
+// import { useDispatch } from 'react-redux'
+// import { updatePost, deletePost } from '../actions/PostActions'
+
 class EditPost extends Component {
     static propTypes = {
         post: PropTypes.shape(
@@ -16,31 +19,24 @@ class EditPost extends Component {
         ).isRequired,
         updatePost: PropTypes.func.isRequired,
         deletePost: PropTypes.func.isRequired,
-        updateCheck: PropTypes.func.isRequired
     };
 
     handleEdit = (e) => {
-        e.preventDefault();
         const id = this.props.post.id;
         const newContent = this.getContent.value;
         this.props.updatePost(id, newContent);
     }
 
-    handleCheck = (id) => {
-        console.log(id, "hchdshfds")
-        this.props.updateCheck({ id })
+    handleDeletePost = (id) => {
+        this.props.deletePost(id)
     }
 
     render() {
         return (
             <div>
                 <div>
-                    <input type="checkbox"
-                        onClick={() => console.log("dieuba dien")}
-                        checked={this.props.post.complete}
-                    />
+                    <input type="checkbox" />
                     {this.props.post.createdAt}
-                    {console.log("Đố diệu hắn có vô file")}
                 </div>
                 <form onSubmit={this.handleEdit}>
                     <div className="button-right">
@@ -48,13 +44,14 @@ class EditPost extends Component {
                             <CheckOutlined />
                         </button>
                         <button>
-                            <CloseOutlined onClick={() => this.props.deletePost(this.props.post.id)} />
+                            <CloseOutlined onClick={() => this.handleDeletePost(this.props.post.id)} />
                         </button>
                     </div>
 
                     <textarea required rows="5" cols="90"
                         ref={(input) => this.getContent = input}
                         defaultValue={this.props.post.content}
+                        onClick={() => this.handleEdit(this.props.post.id)}
                         placeholder="Enter Post Content" />
                 </form>
             </div>
@@ -62,4 +59,4 @@ class EditPost extends Component {
     }
 }
 
-export default EditPost;
+export default (EditPost);

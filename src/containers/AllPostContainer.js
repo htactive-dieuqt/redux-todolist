@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Tabs } from 'antd'
 import { connect } from 'react-redux';
 import AllPost from '../components/AllPost';
-// import { bindActionCreators } from 'redux';
-// import * as PostActions from '../actions/PostActions';
 
 const { TabPane } = Tabs;
 
@@ -12,21 +10,18 @@ class AllPostContainer extends Component {
         return (
             <Tabs type="card" tabPosition='right' >
                 <TabPane tab="All" key="1" >
-                    <AllPost
+                    <AllPost 
                         posts={this.props.posts}
-                       
                     />
                 </TabPane>
                 <TabPane tab="Uncompleted" key="2">
                     <AllPost
-                        posts={(this.props.posts.filter(post => post.complete === false))}
-                       
+                        posts={(this.props.posts.filter(post => !post.complete))}
                     />
                 </TabPane>
                 <TabPane tab="Completed" key="3">
                     <AllPost
-                        posts={this.props.posts.filter(post => post.complete === true)}
-                        
+                        posts={this.props.posts.filter(post => post.complete)}
                     />
                 </TabPane>
             </Tabs>
@@ -39,11 +34,5 @@ const mapStateToProps = (state) => {
         posts: state
     }
 };
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         actions: bindActionCreators(PostActions, dispatch)
-//     }
-// }
 
 export default connect(mapStateToProps)(AllPostContainer);

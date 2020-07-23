@@ -7,7 +7,10 @@ import postReducer from './reducers/PostReducer'
 import App from './App'
 import './index.css'
 
-const store = createStore(postReducer)
+const store = createStore(
+  postReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 render(
   <Provider store={store}>

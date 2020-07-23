@@ -1,27 +1,28 @@
 import * as types from '../constants/PostTypes';
 
-export const addPost = ( content) => ({
+export const addPost = (content) => ({
     type: types.ADD_POST,
     content
 });
 
-export const editPost = (id) => ({
+export const editPost = (id, newContent) => ({
     type: types.EDIT_POST,
-    id
-});
-
-export const updatePost = (id, newContent) => ({
-    type: types.UPDATE_POST,
     id,
     newContent
 });
 
-export const deletePost = (id) => ({
+// export const updatePost = (id, newContent) => ({
+//     type: types.UPDATE_POST,
+//     id,
+//     newContent
+// });
+
+export const deletePost = id => ({
     type: types.DELETE_POST,
-    id: id
+    id
 });
 
-export const viewCheckbox = (id) => ({
+export const updateCheck = (id) => ({
     type: types.VIEW_CHECKBOX,
-    id,
+    id
 });

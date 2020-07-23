@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 class PostForm extends Component {
     static propTypes = {
         addPost: PropTypes.func.isRequired
     }
 
     handleSubmit = (e) => {
-        e.preventDefault();
-        const content = this.getContent.value;
-        this.props.addPost(content);
-        this.getContent.value = '';
+        e.preventDefault()
+        const content = this.getContent.value
+        this.props.addPost(content)
+        this.getContent.value = ''
     };
 
     render() {
