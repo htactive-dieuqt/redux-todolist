@@ -10,16 +10,21 @@ import { useDispatch } from 'react-redux';
 import { updateCheck, editPost, deletePost } from '../actions/PostActions'
 
 const Post = (props) => {
-    const { post } = props
+  
+    const { post, isEdit } = props
+    console.log(isEdit, 'isEdit, setEdit');
     const dispatch = useDispatch();
+    
+
     const handleCheck = (id) => {
         const action = updateCheck(id)
         dispatch(action);
     }
 
-    const handleEditPost = (id, newContent) => {
-        const action = editPost(id, newContent)
+    const handleEditPost = (id) => {
+        const action = editPost(id)
         dispatch(action);
+        console.log('đã vào handle edit post với id ', id);
     }
 
     const handleDeletePost = (id) => {
@@ -50,6 +55,7 @@ const Post = (props) => {
         </div >
     );
 }
+
 Post.propTypes = {
     post: PropTypes.shape(
         {
@@ -60,3 +66,5 @@ Post.propTypes = {
 };
 
 export default Post;
+
+

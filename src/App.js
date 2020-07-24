@@ -1,7 +1,6 @@
 import React from 'react'
 // import { Grid, Segment } from 'semantic-ui-react'
 import AddPost from './components/AddPost'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Slidebar from './containers/Slidebar'
 import { addPost } from './actions/PostActions'
@@ -10,30 +9,23 @@ import MetaPanel from './containers/MetaPanel'
 
 import './App.css'
 
-class App extends React.Component {
-  static propTypes = {
-    addPost: PropTypes.func.isRequired
-  }
-  
-  render() {
-    return (
-      <div className="container">
-        <div className="side-bar">
-          <Slidebar />
-        </div>
+const App = (props) => {
+  return (
+    <div className="container">
+      <div className="side-bar">
+        <Slidebar />
+      </div>
 
-        <div className="content">
-          <AddPost addPost={this.props.addPost} />
-          <AllPostContainer />
-        </div>
+      <div className="content">
+        <AddPost addPost={props.addPost} />
+        <AllPostContainer />
+      </div>
 
-        <div className="meta-panel">
-          <MetaPanel />
-        </div>
-      </div >
-    )
-  }
-
+      <div className="meta-panel">
+        <MetaPanel />
+      </div>
+    </div >
+  )
 }
 
 const mapDispatchToProps = (dispatch) => {

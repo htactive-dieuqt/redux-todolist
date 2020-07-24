@@ -1,54 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import {
+    DeleteOutlined
+} from '@ant-design/icons';
 
 import EditPost from './EditPost';
 import Post from './Post';
 
-class AllPost extends Component {
-    static propTypes = {
-        posts: PropTypes.array.isRequired,
-    };
+const AllPost = (props) => {
 
-    state = {
-        isEditing: false,
-    }
+    const { posts } = props
+    const [isEdit, setEdit] = useState(false)
 
-    render() {
-        const { isEditing } = this.state
-
-        // if (isEditing) {
-        //     return (
-        //         this.props.posts.map((post) => (
-        //             <div className="post" key={post.id}>
-        //                 <EditPost post={post}
-        //                 />
-        //             </div>
-        //         ))
-        //     )
-        // } else {
-        //     return (
-        //         this.props.posts.map((post) => (
-        //             <div className="post" key={post.id}>
-        //                 <Post post={post} />
-        //             </div>
-        //         ))
-        //     )
-        // }
-
-        return (
-            this.props.posts.map((post) => (
-                <div className="post" key={post.id}>
-                    {
-                        (isEditing)
-                            ? <EditPost post={post} />
-                            : <Post post={post} />
-                    }
-                </div>
-            )
-            )
-        )
-
-    }
+    return (
+        <>
+            {
+                posts.map((post) => (
+                    <div className="post" key={post.id}>
+                        {
+                            (!isEdit)
+                                ? <Post post={post} />
+                                : <EditPost post={post} />
+                        }
+                    </div>
+                ))
+            }
+            <input type="checkbox" /> Check all {''}
+            <button>
+                <DeleteOutlined />
+            </button>
+        </>
+    )
 }
+
+AllPost.propTypes = {
+    posts: PropTypes.array.isRequired,
+};
 
 export default AllPost;

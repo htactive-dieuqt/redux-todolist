@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class MetaPanel extends Component {
-    render() {
-        return (
-            <div>
-                jcfdsj
-            </div>
-        )
-    }
+const MetaPanel = () => {
+    return (
+        <div>
+            MetaPanel
+        </div>
+    )
 }
+
+export default MetaPanel

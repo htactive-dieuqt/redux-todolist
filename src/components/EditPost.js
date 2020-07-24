@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -6,57 +6,62 @@ import {
     CloseOutlined
 } from '@ant-design/icons';
 
-// import { useDispatch } from 'react-redux'
-// import { updatePost, deletePost } from '../actions/PostActions'
+import { useDispatch } from 'react-redux';
+import { updateCheck, updatePost, deletePost } from '../actions/PostActions'
 
-class EditPost extends Component {
-    static propTypes = {
-        post: PropTypes.shape(
-            {
-                id: PropTypes.number,
-                content: PropTypes.string,
-            }
-        ).isRequired,
-        updatePost: PropTypes.func.isRequired,
-        deletePost: PropTypes.func.isRequired,
-    };
+const EditPost = (props) => {
 
-    handleEdit = (e) => {
-        const id = this.props.post.id;
-        const newContent = this.getContent.value;
-        this.props.updatePost(id, newContent);
+    const { post } = props
+
+    const dispatch = useDispatch();
+
+    const handleCheck = (id) => {
+        const action = updateCheck(id)
+        dispatch(action);
     }
 
-    handleDeletePost = (id) => {
-        this.props.deletePost(id)
+    const handleUpdatePost = (id, newContent) => {
+        const action = updatePost(id, newContent)
+        dispatch(action);
     }
 
-    render() {
-        return (
+    const handleDeletePost = (id) => {
+        const action = deletePost(id)
+        dispatch(action);
+    }
+
+    return (
+        <div>
             <div>
-                <div>
-                    <input type="checkbox" />
-                    {this.props.post.createdAt}
-                </div>
-                <form onSubmit={this.handleEdit}>
-                    <div className="button-right">
-                        <button>
-                            <CheckOutlined />
-                        </button>
-                        <button>
-                            <CloseOutlined onClick={() => this.handleDeletePost(this.props.post.id)} />
-                        </button>
-                    </div>
-
-                    <textarea required rows="5" cols="90"
-                        ref={(input) => this.getContent = input}
-                        defaultValue={this.props.post.content}
-                        onClick={() => this.handleEdit(this.props.post.id)}
-                        placeholder="Enter Post Content" />
-                </form>
+                <input type="checkbox"
+                    onChange={() => handleCheck(post.id)}
+                    checked={post.complete}
+                />
+                23/07/2020
             </div>
-        );
-    }
+            <div className="button-right">
+                <button>
+                    <CheckOutlined onClick={() => handleUpdatePost(post.id)} />
+                </button>
+                <button>
+                    <CloseOutlined onClick={() => handleDeletePost(post.id)} />
+                </button>
+            </div>
+            <textarea required rows="5" cols="90"
+                defaultValue={post.content}
+                onClick={() => this.updatePost(post.id)}
+                placeholder="Enter Post Content" />
+        </div >
+    );
 }
 
-export default (EditPost);
+EditPost.propTypes = {
+    post: PropTypes.shape(
+        {
+            id: PropTypes.number,
+            content: PropTypes.string,
+        }
+    ).isRequired
+};
+
+export default EditPost;
